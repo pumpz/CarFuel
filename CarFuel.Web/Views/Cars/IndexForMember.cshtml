@@ -1,0 +1,29 @@
+﻿@using app = CarFuel.Models
+@model IEnumerable<app.Car>
+
+@{ 
+  app.User appUser = (app.User)ViewBag.AppUser;
+}
+
+<h2>Car</h2>
+@*div.well.well-sm*@
+<div class="well well-sm">
+  Display Name: @appUser.DisplayName<br />
+  Consumption Rate Unit: @Convert.ToString(appUser.ConsumptionRate) <br />
+
+  You have <span id="total" name="total">@Model.Count()</span> car.
+
+</div>
+<fieldset>
+  @if (Model?.Count() > 0) {
+    foreach (var c in Model) {
+      <div class="car-name">@Html.ActionLink(c.Name, "AddFillUp", new { @id = c.Id }, new { @class = "btn btn-info btn-lg" })</div>
+    }
+  }
+
+  @Html.ActionLink(" ", "Add", "Cars", new { @class = "btn btn-default btn-lg glyphicon glyphicon-plus" })
+  @*<a href="~/Cars/Add"
+     class="btn btn-default btn-lg">
+    <span class="glyphicon glyphicon-plus"></span>
+  </a>*@
+</fieldset>

@@ -1,0 +1,18 @@
+﻿@using CarFuel.Models
+@model IEnumerable<FillUp>
+
+<h2>Home</h2>
+@*div.well.well-sm*@
+<div class="well well-sm">
+
+  We have @Model.Count() fill ups!
+
+</div>
+
+@foreach(var f in Model) {
+  <div>
+    Odometer: @f.Odometer
+    Liters: @f.Liters
+    Km/L. = @f.KmL
+  </div>
+}
